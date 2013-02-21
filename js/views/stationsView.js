@@ -4,151 +4,58 @@ define([
   'backbone',
   'bootstrap',
   'models/station',
-  'collections/stations'
-], function($, _, Backbone, BootStrap, StationModel, StationsCollection){
+  'collections/stations',
+  'views/stationCollectionView'
+], function($, _, Backbone, BootStrap, StationModel, StationsCollection, StationCollectionView){
 
   var StationsView = Backbone.View.extend({
 
     initialize:function() {
-
       var that = this;
       that.render();
+      that.filterIDs = [];
 
-      this.dartMarkers = [];
-      this.dartVisibility = true;
-      var onDartDataHandler = function(collection) {
-        console.log('collection length = ' + collection.length);
-        collection.each(function( station ){ 
-          var stationLatlng = new google.maps.LatLng(station.latitude, station.longitude);
-          var marker = new google.maps.Marker({
-              position: stationLatlng,
-              map: that.map,
-              title:station.description,
-              icon: 'http://maps.google.com/mapfiles/ms/icons/green-dot.png',
-              zIndex:3
-          }); 
-          that.dartMarkers.push(marker);
-        } );
-          that.dartIDs = collection.pluck("id");
-      }
+      that.dartCollectionView = new StationCollectionView({
+        type: StationModel.constants.DART,
+        map: this.map,
+        zIndex: 3,
+        colour: 'green',
+        buttonID: '#dart-button'
+      });
+      that.dartCollectionView.on('add-finish', function(args) {
+        that.filterIDs = _.union(that.filterIDs, args);
+      });
 
-      this.suburbanMarkers = [];
-      this.suburbanVisibility = true;
-      var onSuburbanDataHandler = function(collection) {
-        console.log('collection length = ' + collection.length);
-        collection.each(function( station ){ 
-          var stationLatlng = new google.maps.LatLng(station.latitude, station.longitude);
-          var marker = new google.maps.Marker({
-              position: stationLatlng,
-              map: that.map,
-              title:station.description,
-              icon: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png',
-              zIndex:2
-          }); 
-          that.suburbanMarkers.push(marker);
-        } );
-          that.suburbanIDs = collection.pluck("id");
-      }
+      that.suburbanCollectionView = new StationCollectionView({
+        type: StationModel.constants.SUBURBAN,
+        map: this.map,
+        zIndex: 2,
+        colour: 'blue',
+        buttonID: '#suburban-button'
+      });
+      that.suburbanCollectionView.on('add-finish', function(args) {
+        that.filterIDs = _.union(that.filterIDs, args);
+      });
 
-      this.mainlineMarkers = [];
-      this.mainlineVisibility = true;
-      var onMainlineDataHandler = function(collection) {
-        console.log('collection length = ' + collection.length);
-        collection.each(function( station ){ 
-          var stationLatlng = new google.maps.LatLng(station.latitude, station.longitude);
-          var marker = new google.maps.Marker({
-              position: stationLatlng,
-              map: that.map,
-              title:station.description,
-              icon: 'http://maps.google.com/mapfiles/ms/icons/red-dot.png',
-              zIndex:1
-          }); 
-          that.mainlineMarkers.push(marker);
-        } );
-          that.mainlineIDs = collection.pluck("id");
-      }
+      that.mainlineCollectionView = new StationCollectionView({
+        type: StationModel.constants.MAINLINE,
+        map: this.map,
+        zIndex: 1,
+        colour: 'red',
+        buttonID: '#mainline-button'
+      });
+      that.mainlineCollectionView.on('add-finish', function(args) {
+        that.filterIDs = _.union(that.filterIDs, args);
 
-      this.otherMarkers = [];
-      this.otherVisibility = true;
-      var onOtherDataHandler = function(collection) {
-        console.log('collection length = ' + collection.length);
-          that.otherIDs = collection.pluck("id");
-          that.otherIDs = _.difference(that.otherIDs, that.dartIDs);
-          that.otherIDs = _.difference(that.otherIDs, that.suburbanIDs);
-          that.otherIDs = _.difference(that.otherIDs, that.mainlineIDs);
-          console.log(JSON.stringify(that.otherIDs));
-
-        collection.each(function( station ){ 
-          if (_.contains(that.otherIDs, station.id)) {
-            var stationLatlng = new google.maps.LatLng(station.latitude, station.longitude);
-            var marker = new google.maps.Marker({
-                position: stationLatlng,
-                map: that.map,
-                title:station.description,
-                icon: 'http://maps.google.com/mapfiles/ms/icons/purple-dot.png',
-                zIndex:0
-            }); 
-            that.otherMarkers.push(marker);
-          }
+        that.otherCollectionView = new StationCollectionView({
+          type: StationModel.constants.ALL,
+          map: this.map,
+          zIndex: 0,
+          colour: 'purple',
+          buttonID: '#other-button',
+          filterIDs: that.filterIDs
         });
-      }
-
-      that.dartCollection = new StationsCollection({type: StationModel.constants.DART});
-      that.dartCollection.on('all', function(eventName) {console.log('dartCollection event ' + eventName);});
-      that.dartCollection.fetch({ success : onDartDataHandler});
-
-      that.suburbanCollection = new StationsCollection({type: StationModel.constants.SUBURBAN});
-      that.suburbanCollection.fetch({ success : onSuburbanDataHandler});
-
-      that.mainlineCollection = new StationsCollection({type: StationModel.constants.MAINLINE});
-      that.mainlineCollection.fetch({ success : onMainlineDataHandler});
-
-      that.otherCollection = new StationsCollection({type: StationModel.constants.ALL});
-      that.otherCollection.fetch({ success : onOtherDataHandler});
-
-      $('#dart-button').click(function() {that.toggleDartStations()});
-      $('#dart-button').button('toggle');
-
-      $('#suburban-button').click(function() {that.toggleSuburbanStations()});
-      $('#suburban-button').button('toggle');
-
-      $('#mainline-button').click(function() {that.toggleMainlineStations()});
-      $('#mainline-button').button('toggle');
-
-      $('#other-button').click(function() {that.toggleOtherStations()});
-      $('#other-button').button('toggle');
-    },
-
-    toggleDartStations: function() {
-      console.log("toggleDartStations");
-      this.dartVisibility = !this.dartVisibility;
-        for (var i = 0; i < this.dartMarkers.length; i++) {
-            this.dartMarkers[i].setVisible(this.dartVisibility);
-        }
-    },
-
-    toggleSuburbanStations: function() {
-      console.log("toggleDartStations");
-      this.suburbanVisibility = !this.suburbanVisibility;
-        for (var i = 0; i < this.suburbanMarkers.length; i++) {
-            this.suburbanMarkers[i].setVisible(this.suburbanVisibility);
-        }
-    },
-
-    toggleMainlineStations: function() {
-      console.log("toggleMainlineStations");
-      this.mainlineVisibility = !this.mainlineVisibility;
-        for (var i = 0; i < this.mainlineMarkers.length; i++) {
-            this.mainlineMarkers[i].setVisible(this.mainlineVisibility);
-        }
-    },
-
-    toggleOtherStations: function() {
-      console.log("toggleOtherStations");
-      this.otherVisibility = !this.otherVisibility;
-        for (var i = 0; i < this.otherMarkers.length; i++) {
-            this.otherMarkers[i].setVisible(this.otherVisibility);
-        }
+      });
     },
 
     render: function(){

@@ -1,4 +1,3 @@
-// Filename: router.js
 define([
   'jquery',
   'underscore',
@@ -21,7 +20,7 @@ define([
   
   var initialize = function(){
 
-    var app_router = new AppRouter;
+    var app_router = new AppRouter();
     
     //app_router.on('route:showProjects', function(){
    
