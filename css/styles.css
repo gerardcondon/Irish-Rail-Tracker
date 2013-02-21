@@ -1,0 +1,6 @@
+@import url('bootstrap.css'); 
+
+.center { float: none; margin-left: auto; margin-right: auto; 
+ width: 960px; }
+
+ .train-buttons {margin-bottom: 18px; }
