@@ -6,14 +6,14 @@ define([
   var StationModel = Backbone.Model.extend({
 
     initialize: function( options ) {
-			this.description = options.description; 
-      this.alias = options.alias; 
-      this.latitude = options.latitude; 
-      this.longitude = options.longitude; 
-      this.code = options.code; 
-      this.id = options.id;
-      this.type = options.type;
-		}
+        this.description = options.description; 
+        this.alias = options.alias; 
+        this.latitude = options.latitude; 
+        this.longitude = options.longitude; 
+        this.code = options.code; 
+        this.id = options.id;
+        this.type = options.type;
+	}
   });
 
   StationModel.constants = {};
