@@ -4,7 +4,20 @@
 .center { float: none; margin-left: auto; margin-right: auto; 
  width: 960px; }
 
- .train-buttons {margin-bottom: 18px; }
+.train-buttons {margin-bottom: 18px; }
+
+.sidebar {
+	height:550px;
+ 	border: 1px solid #e3e3e3;
+}
+
+.alignleft {
+	float: left;
+}
+
+.alignright {
+	float: right;
+}
 
 .main-div-surround {
   min-height: 20px;
