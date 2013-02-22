@@ -66,7 +66,7 @@ define([
             var that = this;
             requestCrossDomain(this.url, function(data) {
                 data.type = that.type;
-                options.success && options.success(data);
+                options.success && options.success(that, data, options);
             });
         },
 

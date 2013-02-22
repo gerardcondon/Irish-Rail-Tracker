@@ -15,9 +15,20 @@ define([
 
         load:function(stationCode) {
             $(this.el).append('<p>SidebarView load with code ' + stationCode + '</p>');
+            this.collection = new StationDatasCollection({code: stationCode});
+                var that = this;
+
+            var onDataHandler = function(collection) {
+                console.log('collection length = ' + collection.length);
+
+                collection.each(function(stationData){
+                    console.log('collection traincode = ' + stationData.traincode);
+                    $(that.el).append('<p>Station ' + stationData.traincode + '</p>');
+                });
+            };
+            this.collection.fetch({ success : onDataHandler});
         }
     });
 
     return SideBarView;
-
 });

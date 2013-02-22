@@ -5,7 +5,7 @@ require.config({
     jquery: 'libs/jquery/jquery-min',
     bootstrap: "libs/bootstrap/bootstrap",
     underscore: 'libs/underscore/underscore-min',
-    backbone: 'libs/backbone/backbone-min',
+    backbone: 'libs/backbone/backbone',
     templates: '../templates',
     //alias to plugins
     async : 'libs/require/async',
@@ -13,19 +13,18 @@ require.config({
     propertyParser : 'libs/require/propertyParser'
   },
   shim: {
+      underscore: {
+        exports: '_'
+      },
+      backbone: {
+        deps: ["underscore", "jquery"],
+        exports: "Backbone"
+      },
       "bootstrap": {
         deps: ["jquery"],
         exports: "$.fn.popover"
-      },
-      underscore: {
-      exports: '_'
-    },
-    backbone: {
-      deps: ["underscore", "jquery"],
-      exports: "Backbone"
+      }
     }
-  },
-    enforceDefine: true
 });
 
 // convert Google Maps into an AMD module
