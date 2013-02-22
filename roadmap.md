@@ -3,8 +3,8 @@
 ## JavaScript
 * Refactor Controllers to extract common behaviour
 * Investigate parse function to make DRY
-* Implement sidebar view
-* Implement sidebar element view
+
+* Handle case for no station data found
 
 * Add trains page
 * Add proper about page
@@ -15,7 +15,12 @@
 * Investigate more event based collection add - look at parse function. why are collection events not firing
 
 ## HTML & CSS
-* add pattern background
 * add proper footer
 * Invs fork on Github sign
 * Proper responsive design - work on iPhone
+* extract templates from index.html
+
+## UI
+* Use train icons
+* add pattern background
+* Make Sidebar pretty

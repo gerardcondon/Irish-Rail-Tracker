@@ -32,9 +32,8 @@ define([
                     });
                 }
             });
-            collectionView.on('marker-click', function(stationCode) {
-                console.log('marker clicked with station code ' + stationCode);
-                that.sideBarView.load(stationCode);
+            collectionView.on('marker-click', function(station) {
+                that.sideBarView.load(station);
             });
             this.collections.push(collectionView);
         },

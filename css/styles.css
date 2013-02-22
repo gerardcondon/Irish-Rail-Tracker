@@ -10,6 +10,17 @@
 	height:550px;
  	border: 1px solid #e3e3e3;
  	overflow: auto;
+  background-color: #ffffff;
+}
+
+.stationDataView {
+ 	border: 1px solid #e3e3e3;
+  background-color: #ffffff;
+}
+
+.stationDataList {
+	list-style-type: none;
+  margin: 0;
 }
 
 .alignleft {

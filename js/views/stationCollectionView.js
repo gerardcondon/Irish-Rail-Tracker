@@ -36,9 +36,9 @@ define([
                     title:station.description,
                     icon: 'http://maps.google.com/mapfiles/ms/icons/' + that.colour + '-dot.png',
                     zIndex: that.zIndex
-                }); 
+                });
                 google.maps.event.addListener(marker, 'click', function() {
-                    that.trigger("marker-click", station.code);
+                    that.trigger("marker-click", station);
                 });
 
                 that.markers.push(marker);

@@ -50,7 +50,7 @@ define([
                 params.originTime = $(this).find('Origintime').text();
 
                 params.destination = $(this).find('Destination').text();
-                params.destinationTime = $(this).find('Destinationtime');
+                params.destinationTime = $(this).find('Destinationtime').text();
 
                 params.status = $(this).find('Status').text();
                 params.lastLocation = $(this).find('Lastlocation').text();
@@ -76,6 +76,10 @@ define([
         initialize: function(options) {
             this.code = options.code;
             this.url = 'http://api.irishrail.ie/realtime/realtime.asmx/getStationDataByCodeXML?StationCode=' + this.code;
+        },
+
+        comparator: function(model) {
+            return parseInt(model.get('dueIn'), 10);
         },
 
         sync : function(method, model, options) {

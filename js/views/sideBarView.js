@@ -4,8 +4,9 @@ define([
     'backbone',
     'bootstrap',
     'models/stationData',
-    'collections/stationDatas'
-    ], function($, _, Backbone, BootStrap, StationDataModel, StationDatasCollection){
+    'collections/stationDatas',
+    'views/stationDataView'
+    ], function($, _, Backbone, BootStrap, StationDataModel, StationDatasCollection, StationDataView){
 
     var SideBarView = Backbone.View.extend({
 
@@ -13,17 +14,19 @@ define([
             $(this.el).append('<p>Click on a station to view train information for that station.</p>');
         },
 
-        load:function(stationCode) {
-            $(this.el).append('<p>SidebarView load with code ' + stationCode + '</p>');
-            this.collection = new StationDatasCollection({code: stationCode});
-                var that = this;
+        load:function(station) {
+            var $ul = $('<ul class="stationDataList"></ul>');
+            this.collection = new StationDatasCollection({code: station.code});
+            var that = this;
+            $(that.el).empty();
+            $(that.el).append("<strong>Timetable Information for " + station.description + "</strong>");
 
             var onDataHandler = function(collection) {
-                console.log('collection length = ' + collection.length);
-
                 collection.each(function(stationData){
-                    console.log('collection traincode = ' + stationData.traincode);
-                    $(that.el).append('<p>Station ' + stationData.traincode + '</p>');
+                    console.log("Processing " + JSON.stringify(stationData));
+                    var stationDataView = new StationDataView({stationData: stationData});
+                    $ul.append(stationDataView.render().el);
+                    $(that.el).append($ul);
                 });
             };
             this.collection.fetch({ success : onDataHandler});
