@@ -2,15 +2,15 @@
 // Their usage will become more apparent futher along in the tutorial.
 require.config({
   paths: {
-    jquery: 'libs/jquery/jquery-min',
-    bootstrap: "libs/bootstrap/bootstrap",
-    underscore: 'libs/underscore/underscore-min',
-    backbone: 'libs/backbone/backbone',
+    jquery: 'lib/jquery/jquery-min',
+    bootstrap: "lib/bootstrap/bootstrap",
+    underscore: 'lib/underscore/underscore-min',
+    backbone: 'lib/backbone/backbone',
     templates: '../templates',
     //alias to plugins
-    async : 'libs/require/async',
-    goog : 'libs/require/goog',
-    propertyParser : 'libs/require/propertyParser'
+    async : 'lib/require/async',
+    goog : 'lib/require/goog',
+    propertyParser : 'lib/require/propertyParser'
   },
   shim: {
       underscore: {
