@@ -1,58 +1,31 @@
 define([
-  'jquery',
-  'underscore',
-  'backbone',
-  'collections/stations',
-  'views/stationsView',
-  'gmaps'
-], function($, _, Backbone, StationsCollection, StationsView) {
-  
-  var AppRouter = Backbone.Router.extend({
-    routes: {
-      // Define some URL routes
-      //'projects': 'showProjects',
-      //'users': 'showContributors',
-      
-      // Default
-      '*actions': 'defaultAction'
-    }
-  });
-  
-  var initialize = function(){
+    'jquery',
+    'underscore',
+    'backbone',
+    'collections/stations',
+    'views/stationsView',
+    'views/trainsView',
+    'gmaps'
+    ], function($, _, Backbone, StationsCollection, StationsView, TrainsView) {
 
-    var app_router = new AppRouter();
-    
-    //app_router.on('route:showProjects', function(){
-   
-        // Call render on the module we loaded in via the dependency array
-    //    var projectsView = new ProjectsView();
-    //    projectsView.render();
+    var AppRouter = Backbone.Router.extend({
+        routes: {
+            '*actions': 'defaultAction'
+        }
+    });
 
-    //});
+    var initialize = function(){
 
-    //app_router.on('route:showContributors', function () {
-    
-        // Like above, call render but know that this view has nested sub views which 
-        // handle loading and displaying data from the GitHub API  
-    //    var contributorsView = new ContributorsView();
-    //});
+        var app_router = new AppRouter();
+        app_router.on('route:defaultAction', function (actions) {});
 
-    app_router.on('route:defaultAction', function (actions) {});
-     
-       // We have no matching route, lets display the home page 
-    //    var homeView = new HomeView();
-    //    homeView.render();
+        var stationsView = new StationsView();
+        var trainsView = new TrainsView();
 
-         // unlike the above, we don't call render on this view
-        // as it will handle the render call internally after it
-        // loads data 
-    //    var footerView = new FooterView();
+        Backbone.history.start();
+    };
 
-    var stationsView = new StationsView();
-    
-    Backbone.history.start();
-  };
-  return { 
-    initialize: initialize
-  };
+    return {
+        initialize: initialize
+    };
 });

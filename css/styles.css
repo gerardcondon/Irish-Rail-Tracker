@@ -31,10 +31,12 @@
 	float: right;
 }
 
+.map_container img { max-width:none; }
+
 .main-div-surround {
   min-height: 20px;
   padding: 19px;
-  margin-bottom: 20px;
+  margin-bottom: 0;
   background-color: #f5f5f5;
   border: 1px solid #e3e3e3;
   -webkit-border-radius: 4px;
@@ -51,7 +53,7 @@ padding-right: 5px;
 padding-left: 5px;
 }
 
- .train-buttons { margin-bottom: 0px; }
+ .train-buttons { margin-bottom: 0; }
 
 .main-div-surround {
 
