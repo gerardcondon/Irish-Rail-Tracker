@@ -1,14 +1,11 @@
 define([
-  'underscore',
-  'backbone'
-], function(_, Backbone) {
+  'backbone',
+  'models/locatable'
+], function(Backbone, Locatable) {
 
-    var TrainModel = Backbone.Model.extend({
+    var TrainModel = Locatable.extend({
         initialize: function( options ) {
-            // TODO Extract these from here and station into a base class
-            this.latitude = options.latitude;
-            this.longitude = options.longitude;
-            this.code = options.code;
+            this.constructor.__super__.initialize.apply(this, arguments);
 
             this.status = options.status;
             this.date = options.date;

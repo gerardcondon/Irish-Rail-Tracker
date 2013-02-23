@@ -41,11 +41,16 @@ require.config({
 });
     require([
       'jquery',
-      '../spec/models/train.spec'
+      '../spec/models/train.spec',
+      '../spec/models/station.spec',
+      '../spec/models/locatable.spec',
+      '../spec/models/trainJourney.spec',
+      '../spec/models/trainStatus.spec',
+      '../spec/models/stationStopTimes.spec'
     ],
       function($) {
         $(function() {
-          jasmine.getEnv().addReporter(new jasmine.TrivialReporter());
+          jasmine.getEnv().addReporter(new jasmine.HtmlReporter());
           jasmine.getEnv().execute();
         });
       });

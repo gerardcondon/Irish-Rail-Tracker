@@ -1,30 +1,20 @@
 define([
 	'underscore',
-	'backbone'
-	], function(_, Backbone) {
+	'backbone',
+	'models/trainJourneyModel',
+	'models/stationStopTimes',
+	'models/trainStatus'
+	], function(_, Backbone, TrainJourneyModel, StationStopTimes, TrainStatus) {
 
 	var StationDataModel = Backbone.Model.extend({
 
 		initialize: function( options ) {
-			this.traincode = options.traincode;
-			this.traindate = options.traindate;
-			
-			this.origin = options.origin;
+			this.journey = new TrainJourneyModel(options);
+			this.stopTimes = new StationStopTimes(options);
+			this.trainStatus = new TrainStatus(options);
+
 			this.originTime = options.originTime;
-
-			this.destination = options.destination;
 			this.destinationTime = options.destinationTime;
-
-			this.status = options.status;
-			this.lastLocation = options.lastLocation;
-			this.dueIn = options.dueIn;
-			this.late = options.late;
-
-			this.expectedArrival = options.expectedArrival;
-			this.expectedDeparture = options.expectedDeparture;
-
-			this.scheduledArrival = options.scheduledArrival;
-			this.scheduledDeparture = options.scheduledDeparture;
 
 			this.direction = options.direction;
 			this.trainType = options.trainType;
@@ -32,11 +22,11 @@ define([
 		},
 
 		isArrival: function() {
-            return this.expectedDeparture == '00:00';
+            return this.stopTimes.isArrival();
         },
 
 		isDeparture: function() {
-            return this.expectedArrival == '00:00';
+            return this.stopTimes.isDeparture();
         }
 	});
 

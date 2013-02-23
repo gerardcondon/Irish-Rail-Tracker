@@ -1,16 +1,14 @@
 define([
-  'underscore',
-  'backbone'
-], function(_, Backbone) {
+  'backbone',
+  'models/locatable'
+], function(Backbone, Locatable) {
 
-  var StationModel = Backbone.Model.extend({
+  var StationModel = Locatable.extend({
 
     initialize: function( options ) {
-        this.description = options.description; 
-        this.alias = options.alias; 
-        this.latitude = options.latitude; 
-        this.longitude = options.longitude; 
-        this.code = options.code; 
+        this.constructor.__super__.initialize.apply(this, arguments);
+        this.description = options.description;
+        this.alias = options.alias;
         this.id = options.id;
         this.type = options.type;
 	}
