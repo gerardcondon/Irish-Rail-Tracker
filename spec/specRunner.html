@@ -1,0 +1,58 @@
+<html>
+<head>
+  <title>Spec Runner</title>
+  <!-- Jasmine lib / testing includes -->
+  <link rel="shortcut icon" type="image/png" href="vendor/jasmine_favicon.png">
+  <link rel="stylesheet" type="text/css" href="lib/jasmine.css">
+  <script type="text/javascript" src="lib/jasmine.js"></script>
+  <script type="text/javascript" src="lib/jasmine-html.js"></script>
+  <!-- ... -->
+
+  <!-- global lib includes -->
+  <script type="text/javascript" src="../js/lib/require/require.js"></script>
+  <!-- ... -->
+
+  <script type="text/javascript">
+
+require.config({
+    baseUrl: '../js',
+  paths: {
+    jquery: 'lib/jquery/jquery-min',
+    bootstrap: "lib/bootstrap/bootstrap",
+    underscore: 'lib/underscore/underscore-min',
+    backbone: 'lib/backbone/backbone',
+    //alias to plugins
+    async : 'lib/require/async',
+    propertyParser : 'lib/require/propertyParser'
+  },
+  shim: {
+      underscore: {
+        exports: '_'
+      },
+      backbone: {
+        deps: ["underscore", "jquery"],
+        exports: "Backbone"
+      },
+      "bootstrap": {
+        deps: ["jquery"],
+        exports: "$.fn.popover"
+      }
+    }
+});
+    require([
+      'jquery',
+      '../spec/models/train.spec'
+    ],
+      function($) {
+        $(function() {
+          jasmine.getEnv().addReporter(new jasmine.TrivialReporter());
+          jasmine.getEnv().execute();
+        });
+      });
+
+  </script>
+</head>
+<body>
+  <!-- empty on purpose -->
+</body>
+</html>
