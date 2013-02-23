@@ -68,13 +68,6 @@ define([
                 data.type = that.type;
                 options.success && options.success(that, data, options);
             });
-        },
-
-        fetch: function(options) {
-            options || (options = {});
-            options.dataType="jsonp";
-            options.crossDomain=true;
-            Backbone.Collection.prototype.fetch.call(this, options);
         }
     });
 
