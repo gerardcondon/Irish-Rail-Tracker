@@ -1,7 +1,7 @@
 define([
 	'underscore',
 	'backbone',
-	'models/trainJourneyModel',
+	'models/trainJourney',
 	'models/stationStopTimes',
 	'models/trainStatus'
 	], function(_, Backbone, TrainJourneyModel, StationStopTimes, TrainStatus) {

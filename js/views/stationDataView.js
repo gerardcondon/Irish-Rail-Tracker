@@ -28,21 +28,18 @@ define([
             }
 
             this.$el.html(template({
-                destination : this.model.destination,
-                origin : this.model.origin,
-                expectedArrival : this.model.expectedArrival,
+                destination : this.model.journey.destination,
+                origin : this.model.journey.origin,
+                expectedArrival : this.model.stopTimes.expectedArrival,
+                expectedDeparture : this.model.stopTimes.expectedDeparture,
 
                 originTime : this.model.originTime,
                 destinationTime : this.model.destinationTime,
 
-                status : this.model.status,
-                lastLocation : this.model.lastLocation,
-                dueIn : this.model.dueIn,
-                late : this.model.late,
-                expectedDeparture : this.model.expectedDeparture,
-
-                scheduledArrival : this.model.scheduledArrival,
-                scheduledDeparture : this.model.scheduledDeparture,
+                status : this.model.trainStatus.status,
+                dueIn : this.model.trainStatus.dueIn,
+                late : this.model.trainStatus.late,
+                lastLocation : this.model.trainStatus.lastLocation,
 
                 direction : this.model.direction,
                 trainType : this.model.trainType,
