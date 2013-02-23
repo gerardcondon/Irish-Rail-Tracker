@@ -21,24 +21,24 @@ define([
             var that = this;
             var onDataHandler = function(collection) {
                 console.log('collection length = ' + collection.length);
-                var validIDs = collection.pluck("id");
+                var validIDs = collection.pluck("code");
 
                 if (that.filterIDs) {
                     validIDs = _.difference(validIDs, that.filterIDs);
                 }
 
-                collection.each(function( station ){
-                    if (_.contains(validIDs, station.id)) {
-                        var stationLatlng = new google.maps.LatLng(station.latitude, station.longitude);
+                collection.each(function( train ){
+                    if (_.contains(validIDs, train.code)) {
+                        var trainLatlng = new google.maps.LatLng(train.latitude, train.longitude);
                         var marker = new google.maps.Marker({
-                            position: stationLatlng,
+                            position: trainLatlng,
                             map: that.map,
-                            title:station.code,
+                            title:train.code,
                             icon: 'http://maps.google.com/mapfiles/ms/icons/' + that.colour + '.png',
                             zIndex: that.zIndex
                         });
                         google.maps.event.addListener(marker, 'click', function() {
-                            that.trigger("marker-click", station);
+                            that.trigger("marker-click", train);
                         });
 
                         that.markers.push(marker);

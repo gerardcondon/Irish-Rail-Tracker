@@ -3,10 +3,10 @@ define([
     'underscore',
     'backbone',
     'bootstrap',
-    'models/trainData',
-    'collections/trainDatas',
-    'views/trainDataView'
-    ], function($, _, Backbone, BootStrap, TrainDataModel, TrainDatasCollection, TrainDataView){
+    'models/trainMovement',
+    'collections/trainMovements',
+    'views/trainMovementView'
+    ], function($, _, Backbone, BootStrap, TrainMovementModel, TrainMovementsCollection, TrainMovementView){
 
     var SideBarView = Backbone.View.extend({
 
@@ -15,17 +15,17 @@ define([
         },
 
         load:function(train) {
-            var $ul = $('<ul class="trainDataList"></ul>');
-            this.collection = new TrainDatasCollection({code: train.code});
+            var $ul = $('<ul class="trainMovementList"></ul>');
+            this.collection = new TrainMovementsCollection({code: train.code, date: train.date});
             var that = this;
             $(that.el).empty();
-            $(that.el).append("<strong>Timetable Information for " + train.description + "</strong>");
+            $(that.el).append("<strong>Timetable Information for " + train.message + "</strong>");
 
             var onDataHandler = function(collection) {
-                collection.each(function(trainData){
-                    console.log("Processing " + JSON.stringify(trainData));
-                    var trainDataView = new TrainDataView({stationData: stationData});
-                    $ul.append(stationDataView.render().el);
+                collection.each(function(trainMovement){
+                    console.log("Processing " + JSON.stringify(trainMovement));
+                    var trainMovementView = new TrainMovementView({trainMovement: trainMovement});
+                    $ul.append(trainMovementView.render().el);
                     $(that.el).append($ul);
                 });
             };

@@ -14,6 +14,15 @@
 	<link rel="stylesheet" href="css/styles.css">
 
   <!-- Templates -->
+  <script type="text/template" id="train-movement-template">
+    <div class="trainMovementView">
+      <label><strong>Station:</strong> <%- locationFullName %></label>
+      <label><strong>Arrived:</strong> <%- arrival %></label>
+      <label><strong>Departed:</strong> <%- departure %></label>
+      <label><strong>Expected Arrived:</strong> <%- expectedArrival %></label>
+      <label><strong>Expected Departed:</strong> <%- expectedDeparture %></label>
+    </div>
+  </script>
 
   <script type="text/template" id="station-data-departing-template">
     <div class="stationDataView">

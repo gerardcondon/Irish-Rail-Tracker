@@ -5,9 +5,9 @@ define([
     'bootstrap',
     'models/train',
     'collections/trains',
-    'views/trainCollectionView'
-    //'views/trainSideBarView'
-    ], function($, _, Backbone, BootStrap, TrainModel, TrainsCollection, TrainCollectionView){
+    'views/trainCollectionView',
+    'views/trainSideBarView'
+    ], function($, _, Backbone, BootStrap, TrainModel, TrainsCollection, TrainCollectionView, TrainSideBarView){
 
     var TrainsView = Backbone.View.extend({
 
@@ -28,12 +28,12 @@ define([
                         stationType: TrainModel.constants.ALL,
                         zIndex: 0,
                         colour: 'purple',
-                        buttonID: '#other-button'
+                        buttonID: '#train-other-button'
                     });
                 }
             });
             collectionView.on('marker-click', function(station) {
-                //that.sideBarView.load(station);
+                that.sideBarView.load(station);
             });
             this.collections.push(collectionView);
         },
@@ -43,27 +43,27 @@ define([
             this.render();
             this.filterIDs = [];
             this.collections = [];
-            //this.sideBarView = new SideBarView({el: '#main-panel-sidebar'});
+            this.sideBarView = new TrainSideBarView({el: '#trains-main-panel-sidebar'});
 
             this.addTrainCollection({
                 type: TrainModel.constants.DART,
                 zIndex: 3,
                 colour: 'green',
-                buttonID: '#dart-button'
+                buttonID: '#train-dart-button'
             });
 
             this.addTrainCollection({
                 type: TrainModel.constants.SUBURBAN,
                 zIndex: 2,
                 colour: 'blue',
-                buttonID: '#suburban-button'
+                buttonID: '#train-suburban-button'
             });
 
             this.addTrainCollection({
                 type: TrainModel.constants.MAINLINE,
                 zIndex: 1,
                 colour: 'red',
-                buttonID: '#mainline-button'
+                buttonID: '#train-mainline-button'
             });
 
         },
