@@ -3,6 +3,7 @@
 ## JavaScript
 * Refactor Controllers to extract common behaviour
 * Investigate parse function to make DRY
+* Move parse functions down to the model
  
 * Add proper about page
 
@@ -12,6 +13,9 @@
 
 * Refactor models to extract common base class
 * Fix newline in train message
+
+* Train Summary Implement test & Fix the case when the departure is on the following day
+* Fix train movement for departure and origin stations
 
 ## HTML & CSS
 * add proper footer
