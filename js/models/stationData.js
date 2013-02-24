@@ -9,16 +9,9 @@ define([
 	var StationDataModel = Backbone.Model.extend({
 
 		initialize: function(attributes, options) {
-			this.journey = new TrainJourneyModel(options);
-			this.stopTimes = new StationStopTimes(options);
-			this.trainStatus = new TrainStatus(options);
-
-			this.originTime = options.originTime;
-			this.destinationTime = options.destinationTime;
-
-			this.direction = options.direction;
-			this.trainType = options.trainType;
-			this.locationType = options.locationType;
+			this.journey = new TrainJourneyModel([], attributes);
+			this.stopTimes = new StationStopTimes([], attributes);
+			this.trainStatus = new TrainStatus([], attributes);
 		},
 
 		isArrival: function() {

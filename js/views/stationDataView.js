@@ -28,22 +28,22 @@ define([
             }
 
             this.$el.html(template({
-                destination : this.model.journey.destination,
-                origin : this.model.journey.origin,
-                expectedArrival : this.model.stopTimes.expectedArrival,
-                expectedDeparture : this.model.stopTimes.expectedDeparture,
+                destination : this.model.journey.get('destination'),
+                origin : this.model.journey.get('origin'),
+                expectedArrival : this.model.stopTimes.get('expectedArrival'),
+                expectedDeparture : this.model.stopTimes.get('expectedDeparture'),
 
-                originTime : this.model.originTime,
-                destinationTime : this.model.destinationTime,
+                originTime : this.model.get('originTime'),
+                destinationTime : this.model.get('destinationTime'),
 
-                status : this.model.trainStatus.status,
-                dueIn : this.model.trainStatus.dueIn,
-                late : this.model.trainStatus.late,
-                lastLocation : this.model.trainStatus.lastLocation,
+                status : this.model.trainStatus.get('status'),
+                dueIn : this.model.trainStatus.get('dueIn'),
+                late : this.model.trainStatus.get('late'),
+                lastLocation : this.model.trainStatus.get('lastLocation'),
 
-                direction : this.model.direction,
-                trainType : this.model.trainType,
-                locationType : this.model.locationType
+                direction : this.model.get('direction'),
+                trainType : this.model.get('trainType'),
+                locationType : this.model.get('locationType')
 
             }));
             return this;

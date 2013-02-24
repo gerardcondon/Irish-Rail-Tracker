@@ -10,7 +10,7 @@ describe("Train Journey Model Tests", function() {
 	var TEST_ORIGIN = "TEST_ORIGIN";
 
 	beforeEach(function() {
-		sut = new TrainJourneyModel({
+		sut = new TrainJourneyModel([], {
 			code : TEST_CODE,
 			date : TEST_DATE,
 			destination : TEST_DESTINATION,
@@ -19,19 +19,19 @@ describe("Train Journey Model Tests", function() {
 	});
 
 	it("has a code", function() {
-		expect(sut.code).toEqual(TEST_CODE);
+		expect(sut.get('code')).toEqual(TEST_CODE);
 	});
 
 	it("has a date", function() {
-		expect(sut.date).toEqual(TEST_DATE);
+		expect(sut.get('date')).toEqual(TEST_DATE);
 	});
 
 	it("has a destination", function() {
-		expect(sut.destination).toEqual(TEST_DESTINATION);
+		expect(sut.get('destination')).toEqual(TEST_DESTINATION);
 	});
 
 	it("has an origin", function() {
-		expect(sut.origin).toEqual(TEST_ORIGIN);
+		expect(sut.get('origin')).toEqual(TEST_ORIGIN);
 	});
 });
 });

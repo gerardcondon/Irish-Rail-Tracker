@@ -19,19 +19,19 @@ describe("Station Stop Times Model Tests", function() {
 	});
 
 	it("has an expected Arrival", function() {
-		expect(sut.expectedArrival).toEqual(TEST_EXPECTED_ARRIVAL);
+		expect(sut.get('expectedArrival')).toEqual(TEST_EXPECTED_ARRIVAL);
 	});
 
 	it("has an expected Departure", function() {
-		expect(sut.expectedDeparture).toEqual(TEST_EXPECTED_DEPARTURE);
+		expect(sut.get('expectedDeparture')).toEqual(TEST_EXPECTED_DEPARTURE);
 	});
 
 	it("has a scheduled Arrival", function() {
-		expect(sut.scheduledArrival).toEqual(TEST_SCHEDULED_ARRIVAL);
+		expect(sut.get('scheduledArrival')).toEqual(TEST_SCHEDULED_ARRIVAL);
 	});
 
 	it("has a scheduled Departure", function() {
-		expect(sut.scheduledDeparture).toEqual(TEST_SCHEDULED_DEPARTURE);
+		expect(sut.get('scheduledDeparture')).toEqual(TEST_SCHEDULED_DEPARTURE);
 	});
 
 	describe("Arrivals and Departures", function() {
@@ -40,7 +40,7 @@ describe("Station Stop Times Model Tests", function() {
 		});
 
 		it("no arrival time means that it's a departure", function() {
-			sut.expectedArrival = '00:00';
+			sut.set({expectedArrival : '00:00'});
 			expect(sut.isDeparture()).toBeTruthy();
 		});
 
@@ -49,7 +49,7 @@ describe("Station Stop Times Model Tests", function() {
 		});
 
 		it("no departure time means that it's an arrival", function() {
-			sut.expectedDeparture = '00:00';
+			sut.set({expectedDeparture : '00:00'});
 			expect(sut.isArrival()).toBeTruthy();
 		});
 	});

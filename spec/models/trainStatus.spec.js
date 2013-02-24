@@ -10,7 +10,7 @@ describe("Train Status Model Tests", function() {
 	var TEST_LATE = "TEST_LATE";
 
 	beforeEach(function() {
-		sut = new TrainJourneyModel({
+		sut = new TrainJourneyModel([], {
 			status : TEST_STATUS,
 			lastLocation : TEST_LAST_LOCATION,
 			dueIn : TEST_DUE_IN,
@@ -19,19 +19,19 @@ describe("Train Status Model Tests", function() {
 	});
 
 	it("has a status", function() {
-		expect(sut.status).toEqual(TEST_STATUS);
+		expect(sut.get('status')).toEqual(TEST_STATUS);
 	});
 
 	it("has a lastLocation", function() {
-		expect(sut.lastLocation).toEqual(TEST_LAST_LOCATION);
+		expect(sut.get('lastLocation')).toEqual(TEST_LAST_LOCATION);
 	});
 
 	it("has a dueIn time", function() {
-		expect(sut.dueIn).toEqual(TEST_DUE_IN);
+		expect(sut.get('dueIn')).toEqual(TEST_DUE_IN);
 	});
 
 	it("has an late status", function() {
-		expect(sut.late).toEqual(TEST_LATE);
+		expect(sut.get('late')).toEqual(TEST_LATE);
 	});
 });
 });

@@ -3,12 +3,14 @@ define([
 	], function(Backbone) {
 
 	var TrainJourneyModel = Backbone.Model.extend({
-		initialize: function(options) {
-			this.code = options.code;
-			this.date = options.date;
-			
-			this.origin = options.origin;
-			this.destination = options.destination;
+		initialize: function(attributes, options) {
+			this.set({
+				code : options.code,
+				date : options.date,
+				
+				origin : options.origin,
+				destination : options.destination
+			});
 		}
 	});
 
