@@ -1,22 +1,16 @@
 define([
 	'underscore',
-	'backbone'
-	], function(_, Backbone) {
+	'backbone',
+	'models/trainJourney',
+	'models/stationStopTimes',
+	'models/trainMovementSummary'
+	], function(_, Backbone, TrainJourneyModel, StationStopTimes, TrainMovementSummaryModel) {
 
 	var TrainMovementModel = Backbone.Model.extend({
 
 		initialize: function( options ) {
-			this.traincode = options.traincode;
-			this.traindate = options.traindate;
-			
-			this.origin = options.origin;
-			this.destination = options.destination;
-
-			this.expectedArrival = options.expectedArrival;
-			this.expectedDeparture = options.expectedDeparture;
-
-			this.scheduledArrival = options.scheduledArrival;
-			this.scheduledDeparture = options.scheduledDeparture;
+			this.journey = new TrainJourneyModel([], options);
+			this.stopTimes = new StationStopTimes([], options);
 
 			this.locationCode = options.locationCode;
 			this.locationFullName = options.locationFullName;
@@ -28,6 +22,8 @@ define([
 			this.autoArrival = options.autoArrival;
 			this.autoDepart = options.autoDepart;
 			this.stopType = options.stopType;
+
+			this.summary = new TrainMovementSummaryModel([], options);
 		}
 	});
 

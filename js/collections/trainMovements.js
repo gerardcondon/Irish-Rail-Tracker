@@ -48,7 +48,7 @@ define([
             return parsed;
         },
 
-        initialize: function(options) {
+        initialize: function(models, options) {
             this.code = options.code;
             this.date = options.date.split(' ').join('_');
             this.url = 'http://api.irishrail.ie/realtime/realtime.asmx/getTrainMovementsXML?TrainId=' + this.code + '&TrainDate=' + this.date;

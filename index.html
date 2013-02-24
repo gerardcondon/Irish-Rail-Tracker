@@ -16,11 +16,9 @@
   <!-- Templates -->
   <script type="text/template" id="train-movement-template">
     <div class="trainMovementView">
-      <label><strong>Station:</strong> <%- locationFullName %></label>
-      <label><strong>Arrived:</strong> <%- arrival %></label>
-      <label><strong>Departed:</strong> <%- departure %></label>
-      <label><strong>Expected Arrived:</strong> <%- expectedArrival %></label>
-      <label><strong>Expected Departed:</strong> <%- expectedDeparture %></label>
+      <label><strong>Station:</strong> <%- locationName %></label>
+      <label><strong><%  print(hasArrived ?  'Arrived:' : 'Expected Arrival') %></strong> <%- arrivalTime %></label>
+      <label><strong><% print(hasDeparted ?  'Departed:' : 'Expected Departure') %></strong> <%- departureTime %></label>
     </div>
   </script>
 
@@ -65,9 +63,9 @@
           <div class="navbar-inner">
             <div class="container">
               <ul class="nav">
-                <li><a href="#station-map-page" data-toggle="tab">Station Map</a></li>
+                <li class="active"><a href="#station-map-page" data-toggle="tab">Station Map</a></li>
                 <li><a href="#station-list-page" data-toggle="tab">Station List</a></li>
-                <li class="active"><a href="#trains-page" data-toggle="tab">Train Map</a></li>
+                <li><a href="#trains-page" data-toggle="tab">Train Map</a></li>
                 <li><a href="#train-list-page" data-toggle="tab">Train List</a></li>
                 <li><a href="http://www.gerardcondon.com/about">About</a></li>
               </ul>
@@ -78,7 +76,7 @@
       
       <div id="myTabContent" class="tab-content">
               
-      <div id="station-map-page" class='tab-pane main-div-surround' style='height: 600px'>
+      <div id="station-map-page" class='tab-pane active main-div-surround' style='height: 600px'>
         <div class='row-fluid span12'>
           <div class="train-buttons btn-group offset3 row-fluid" data-toggle="buttons-checkbox">
             <button type="button" class="btn btn-primary" id="dart-button">Dart</button>
@@ -94,7 +92,7 @@
         </div>
       </div>
 
-      <div id="trains-page" class="tab-pane active main-div-surround" style='height: 600px'>
+      <div id="trains-page" class="tab-pane main-div-surround" style='height: 600px'>
         <div class='row-fluid span12'>
           <div class="train-buttons btn-group offset3 row-fluid" data-toggle="buttons-checkbox">
             <button type="button" class="btn btn-primary" id="trains-dart-button">Dart</button>

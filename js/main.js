@@ -6,6 +6,7 @@ require.config({
     bootstrap: "lib/bootstrap/bootstrap",
     underscore: 'lib/underscore/underscore-min',
     backbone: 'lib/backbone/backbone',
+    moment: "lib/moment/moment",
     templates: '../templates',
     //alias to plugins
     async : 'lib/require/async',

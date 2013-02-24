@@ -3,7 +3,7 @@ define([
 	], function(Backbone) {
 
 	var StationStopTimes = Backbone.Model.extend({
-		initialize: function(options) {
+		initialize: function(attributes, options) {
 			this.expectedArrival = options.expectedArrival;
 			this.expectedDeparture = options.expectedDeparture;
 

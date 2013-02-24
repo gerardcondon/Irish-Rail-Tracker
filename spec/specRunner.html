@@ -20,6 +20,7 @@ require.config({
     jquery: 'lib/jquery/jquery-min',
     bootstrap: "lib/bootstrap/bootstrap",
     underscore: 'lib/underscore/underscore-min',
+    moment: "lib/moment/moment",
     backbone: 'lib/backbone/backbone',
     //alias to plugins
     async : 'lib/require/async',
@@ -46,7 +47,8 @@ require.config({
       '../spec/models/locatable.spec',
       '../spec/models/trainJourney.spec',
       '../spec/models/trainStatus.spec',
-      '../spec/models/stationStopTimes.spec'
+      '../spec/models/stationStopTimes.spec',
+      '../spec/models/trainMovementSummary.spec'
     ],
       function($) {
         $(function() {

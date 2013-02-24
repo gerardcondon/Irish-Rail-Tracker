@@ -10,7 +10,7 @@ describe("Station Stop Times Model Tests", function() {
 	var TEST_SCHEDULED_DEPARTURE = "TEST_SCHEDULED_DEPARTURE";
 
 	beforeEach(function() {
-		sut = new StationStopTimesModel({
+		sut = new StationStopTimesModel([], {
 			expectedArrival : TEST_EXPECTED_ARRIVAL,
 			expectedDeparture : TEST_EXPECTED_DEPARTURE,
 			scheduledArrival : TEST_SCHEDULED_ARRIVAL,

@@ -8,7 +8,7 @@ define([
 
 	var StationDataModel = Backbone.Model.extend({
 
-		initialize: function( options ) {
+		initialize: function(attributes, options) {
 			this.journey = new TrainJourneyModel(options);
 			this.stopTimes = new StationStopTimes(options);
 			this.trainStatus = new TrainStatus(options);

@@ -18,8 +18,9 @@ define([
 
         render:function() {
             var template = this.template;
-
-            this.$el.html(template(this.model.toJSON()));
+            var summaryJSON = this.model.summary.toJSON();
+            console.log("Rendering movement with data: " + JSON.stringify(summaryJSON));
+            this.$el.html(template(summaryJSON));
             return this;
         }
     });
