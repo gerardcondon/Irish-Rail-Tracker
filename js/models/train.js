@@ -4,14 +4,16 @@ define([
 ], function(Backbone, Locatable) {
 
     var TrainModel = Locatable.extend({
-        initialize: function( options ) {
+        defaults:{
+            status : "",
+            date : "",
+
+            message : "",
+            direction : ""
+        },
+
+        initialize: function(attributes, options) {
             this.constructor.__super__.initialize.apply(this, arguments);
-
-            this.status = options.status;
-            this.date = options.date;
-
-            this.message = options.message;
-            this.direction = options.direction;
         }
     });
 

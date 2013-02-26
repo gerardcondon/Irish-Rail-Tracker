@@ -35,20 +35,14 @@ define([
     var StationsCollection = Backbone.Collection.extend({
         model: StationModel,
         parse: function(data) {
-
+            var that = this;
             var parsed=[];
             var xml = data.results[0];
             var xmlDoc = $.parseXML(xml);
             var $xml = $(xmlDoc);
             $xml.find('objStation').each(function (index) {
 
-                var params = {};
-                params.description = $(this).find('StationDesc').text();
-                params.alias = $(this).find('StationAlias').text();
-                params.latitude = $(this).find('StationLatitude').text();
-                params.longitude = $(this).find('StationLongitude').text();
-                params.code = $(this).find('StationCode').text();
-                params.id = $(this).find('StationId').text();
+                var params = that.model.parse(this);
                 params.type = data.type;
 
                 parsed.push(params);

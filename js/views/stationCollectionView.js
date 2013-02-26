@@ -28,12 +28,13 @@ define([
                 }
 
                 collection.each(function( station ){
-                    if (_.contains(validIDs, station.id)) {
-                        var stationLatlng = new google.maps.LatLng(station.latitude, station.longitude);
+                    if (_.contains(validIDs, station.get('id'))) {
+                        //console.log('Processing station ' + JSON.stringify(station.toJSON()));
+                        var stationLatlng = new google.maps.LatLng(station.get('latitude'), station.get('longitude'));
                         var marker = new google.maps.Marker({
                             position: stationLatlng,
                             map: that.map,
-                            title:station.description,
+                            title:station.get('description'),
                             icon: 'http://maps.google.com/mapfiles/ms/icons/' + that.colour + '-dot.png',
                             zIndex: that.zIndex
                         });

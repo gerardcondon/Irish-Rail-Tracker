@@ -16,17 +16,17 @@ define([
 
         load:function(train) {
             var $ul = $('<ul class="trainMovementList"></ul>');
-            this.collection = new TrainMovementsCollection([], {code: train.code, date: train.date});
+            this.collection = new TrainMovementsCollection([], {code: train.get('code'), date: train.get('date')});
             var that = this;
             $(that.el).empty();
-            $(that.el).append("<strong>Timetable Information for " + train.message + "</strong>");
+            $(that.el).append("<strong>Timetable Information for " + train.get('message') + "</strong>");
 
             var onDataHandler = function(collection) {
                 if (collection.length === 0) {
                     $(that.el).append("<hr>No stop information for selected train.");
                 } else {
                     collection.each(function(trainMovement){
-                        console.log("Processing " + JSON.stringify(trainMovement));
+                        //console.log("Processing " + JSON.stringify(trainMovement));
                         var trainMovementView = new TrainMovementView({trainMovement: trainMovement});
                         $ul.append(trainMovementView.render().el);
                         $(that.el).append($ul);

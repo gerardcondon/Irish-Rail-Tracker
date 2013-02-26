@@ -25,31 +25,31 @@ describe("Train Model Tests", function() {
 	});
 
 	it("has a code", function() {
-		expect(sut.code).toEqual(TEST_CODE);
+		expect(sut.get("code")).toEqual(TEST_CODE);
 	});
 
 	it("has a latitude", function() {
-		expect(sut.latitude).toEqual(TEST_LATITUDE);
+		expect(sut.get("latitude")).toEqual(TEST_LATITUDE);
 	});
 
 	it("has a longitude", function() {
-		expect(sut.longitude).toEqual(TEST_LONGITUDE);
+		expect(sut.get("longitude")).toEqual(TEST_LONGITUDE);
 	});
 
 	it("has a status", function() {
-		expect(sut.status).toEqual(TEST_STATUS);
+		expect(sut.get("status")).toEqual(TEST_STATUS);
 	});
 
 	it("has a date", function() {
-		expect(sut.date).toEqual(TEST_DATE);
+		expect(sut.get("date")).toEqual(TEST_DATE);
 	});
 
 	it("has a message", function() {
-		expect(sut.message).toEqual(TEST_MESSAGE);
+		expect(sut.get("message")).toEqual(TEST_MESSAGE);
 	});
 
 	it("has a direction", function() {
-		expect(sut.direction).toEqual(TEST_DIRECTION);
+		expect(sut.get("direction")).toEqual(TEST_DIRECTION);
 	});
 });
 });
