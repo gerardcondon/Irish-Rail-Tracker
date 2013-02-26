@@ -41,6 +41,11 @@
 	float: right;
 }
 
+.accordion-heading {
+  background-color: #fbfbfb;
+
+}
+
 .map_container img { max-width:none; }
 
 .main-div-surround {
