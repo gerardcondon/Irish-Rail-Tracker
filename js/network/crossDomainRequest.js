@@ -1,8 +1,6 @@
 define([
-    'jquery',
-    'underscore',
-    'backbone'
-    ], function($, _, Backbone){
+    'jquery'
+    ], function($){
 
     // Accepts a url and a callback function to run.
     var execCrossDomainRequest = function(site, callback) {
