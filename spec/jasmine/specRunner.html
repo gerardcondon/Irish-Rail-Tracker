@@ -10,7 +10,7 @@
   <!-- ... -->
 
   <!-- global lib includes -->
-  <script type="text/javascript" src="../js/lib/require/require.js"></script>
+  <script type="text/javascript" src="../../js/lib/require/require.js"></script>
   <!-- ... -->
 
   <script type="text/javascript">
@@ -43,14 +43,14 @@ require.config({
 });
     require([
       'jquery',
-      '../spec/models/train.spec',
-      '../spec/models/station.spec',
-      '../spec/models/locatable.spec',
-      '../spec/models/trainJourney.spec',
-      '../spec/models/trainStatus.spec',
-      '../spec/models/stationStopTimes.spec',
-      '../spec/models/trainMovement.spec',
-      '../spec/models/trainMovementSummary.spec'
+      '../spec/jasmine/models/train.spec',
+      '../spec/jasmine/models/station.spec',
+      '../spec/jasmine/models/locatable.spec',
+      '../spec/jasmine/models/trainJourney.spec',
+      '../spec/jasmine/models/trainStatus.spec',
+      '../spec/jasmine/models/stationStopTimes.spec',
+      '../spec/jasmine/models/trainMovement.spec',
+      '../spec/jasmine/models/trainMovementSummary.spec'
     ],
       function($) {
         $(function() {
