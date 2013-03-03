@@ -5,6 +5,7 @@ define([
     'collections/stations',
     'views/stationsView',
     'views/trainsView',
+    //'views/stationsListView',
     'gmaps'
     ], function($, _, Backbone, StationsCollection, StationsView, TrainsView) {
 
@@ -19,7 +20,12 @@ define([
         var app_router = new AppRouter();
         app_router.on('route:defaultAction', function (actions) {});
 
+        //var stationNetwork = new StationNetwork();
+
         var stationsView = new StationsView();
+        //var stationsListView = new StationsListView({
+        //    el : '#station-list-container',
+        //    stationNetwork : stationNetwork});
         var trainsView = new TrainsView();
 
         Backbone.history.start();
