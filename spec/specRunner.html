@@ -6,6 +6,7 @@
   <link rel="stylesheet" type="text/css" href="lib/jasmine.css">
   <script type="text/javascript" src="lib/jasmine.js"></script>
   <script type="text/javascript" src="lib/jasmine-html.js"></script>
+  <script type="text/javascript" src="lib/jasmine-console-runner.js"></script>
   <!-- ... -->
 
   <!-- global lib includes -->
@@ -53,7 +54,9 @@ require.config({
     ],
       function($) {
         $(function() {
-          jasmine.getEnv().addReporter(new jasmine.HtmlReporter());
+          window.console_reporter = new jasmine.ConsoleReporter();
+          jasmine.getEnv().addReporter(console_reporter);
+         // jasmine.getEnv().addReporter(new jasmine.HtmlReporter());
           jasmine.getEnv().execute();
         });
       });

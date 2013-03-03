@@ -111,7 +111,22 @@ jasmine.ExpectationResult = function(params) {
   this.actual = params.actual;
   this.message = this.passed_ ? 'Passed.' : params.message;
 
-  var trace = (params.trace || new Error(this.message));
+  var err, tokens;
+  try { throw new Error(this.message); } catch(e) {
+    if (e) {
+      err = {};
+      var stackArray = [];
+      stackArray.push(e.message);
+      stackArray.push('\tat ' + e.stackArray[0].sourceURL + ':' + e.stackArray[0].line);
+      stackArray.push('\tat ' + e.stackArray[1].sourceURL + ':' + e.stackArray[1].line);
+      stackArray.push('\tat ' + e.stackArray[2].sourceURL + ':' + e.stackArray[2].line);
+      stackArray.push('\tat ' + e.stackArray[3].sourceURL + ':' + e.stackArray[3].line);
+      err.stackArray = stackArray;
+      err.stack = stackArray.join('\n');
+      err.message = e.message;
+    }
+  }
+  var trace = (params.trace || err);
   this.trace = this.passed_ ? '' : trace;
 };
 
@@ -2466,7 +2481,7 @@ jasmine.Suite = function(env, description, specDefinitions, parentSuite) {
 jasmine.Suite.prototype.getFullName = function() {
   var fullName = this.description;
   for (var parentSuite = this.parentSuite; parentSuite; parentSuite = parentSuite.parentSuite) {
-    fullName = parentSuite.description + ' ' + fullName;
+    fullName = parentSuite.description + ': ' + fullName;
   }
   return fullName;
 };
