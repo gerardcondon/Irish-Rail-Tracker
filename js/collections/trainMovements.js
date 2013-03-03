@@ -4,7 +4,7 @@ define([
     'backbone',
     'models/trainMovement',
     'collections/BaseXMLCollection'
-    ], function($, _, Backbone, CrossDomainRequest, TrainMovementModel, BaseXMLCollection){
+    ], function($, _, Backbone, TrainMovementModel, BaseXMLCollection){
 
 
     var TrainsCollection = BaseXMLCollection.extend({
