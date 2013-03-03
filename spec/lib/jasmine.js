@@ -114,16 +114,21 @@ jasmine.ExpectationResult = function(params) {
   var err, tokens;
   try { throw new Error(this.message); } catch(e) {
     if (e) {
-      err = {};
-      var stackArray = [];
-      stackArray.push(e.message);
-      stackArray.push('\tat ' + e.stackArray[0].sourceURL + ':' + e.stackArray[0].line);
-      stackArray.push('\tat ' + e.stackArray[1].sourceURL + ':' + e.stackArray[1].line);
-      stackArray.push('\tat ' + e.stackArray[2].sourceURL + ':' + e.stackArray[2].line);
-      stackArray.push('\tat ' + e.stackArray[3].sourceURL + ':' + e.stackArray[3].line);
-      err.stackArray = stackArray;
-      err.stack = stackArray.join('\n');
-      err.message = e.message;
+      if (e.stackArray) {
+        var stackArray = [];
+        stackArray.push(e.message);
+        err = {};
+        var i = 0;
+        for (i = 0; i < 3; i++) {
+          stackArray.push('\tat ' + e.stackArray[i].sourceURL + ':' + e.stackArray[i].line);
+        }
+        err.stackArray = stackArray;
+        err.stack = stackArray.join('\n');
+        err.message = e.message;
+      }
+      else {
+        err = e;
+      }
     }
   }
   var trace = (params.trace || err);

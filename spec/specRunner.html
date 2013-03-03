@@ -56,7 +56,7 @@ require.config({
         $(function() {
           window.console_reporter = new jasmine.ConsoleReporter();
           jasmine.getEnv().addReporter(console_reporter);
-         // jasmine.getEnv().addReporter(new jasmine.HtmlReporter());
+          jasmine.getEnv().addReporter(new jasmine.HtmlReporter());
           jasmine.getEnv().execute();
         });
       });
