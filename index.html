@@ -16,7 +16,7 @@
   <!-- Templates -->
   <script type="text/template" id="train-movement-template">
   <div class="trainMovementView">
-  <label><strong>Station:</strong> <%- locationName %></label>
+  <label><strong>Station:</strong> <%- locationFullName %></label>
   <label><strong><%  print(hasArrived ?  'Arrived:' : 'Expected Arrival') %></strong> <%- arrivalTime %></label>
   <label><strong><% print(hasDeparted ?  'Departed:' : 'Expected Departure') %></strong> <%- departureTime %></label>
   </div>

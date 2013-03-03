@@ -47,7 +47,7 @@ define([
                 that.trigger("add-finish", validIDs);
             };
 
-            this.collection = new TrainsCollection({type: options.type});
+            this.collection = new TrainsCollection([], {type: options.type});
             this.collection.fetch({ success : onDataHandler});
 
             $(this.buttonID).click(function() {that.toggleTrains();});

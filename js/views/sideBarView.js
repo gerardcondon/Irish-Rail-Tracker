@@ -16,7 +16,7 @@ define([
 
         load:function(station) {
             var $ul = $('<ul class="stationDataList"></ul>');
-            this.collection = new StationDatasCollection({code: station.get('code')});
+            this.collection = new StationDatasCollection([], {code: station.get('code')});
             var that = this;
             $(that.el).empty();
             $(that.el).append("<strong>Timetable Information for " + station.get('description') + "</strong>");

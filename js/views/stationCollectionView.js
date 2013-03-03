@@ -48,7 +48,7 @@ define([
                 that.trigger("add-finish", validIDs);
             };
 
-            this.collection = new StationsCollection({type: options.type});
+            this.collection = new StationsCollection({}, {type: options.type});
             this.collection.fetch({ success : onDataHandler});
 
             $(this.buttonID).click(function() {that.toggleStations();});
