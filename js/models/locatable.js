@@ -9,13 +9,13 @@ define([
             code : ""
         }
     }, {
-        parse: function(xml, prefix) {
+        parse: function(xmlNode, prefix) {
             var attributes = {};
             prefix = prefix || "";
 
-            attributes.latitude = $(xml).find(prefix + 'Latitude').text();
-            attributes.longitude = $(xml).find(prefix + 'Longitude').text();
-            attributes.code = $(xml).find(prefix + 'Code').text();
+            attributes.latitude = $(xmlNode).find(prefix + 'Latitude').text();
+            attributes.longitude = $(xmlNode).find(prefix + 'Longitude').text();
+            attributes.code = $(xmlNode).find(prefix + 'Code').text();
 
             return attributes;
         }

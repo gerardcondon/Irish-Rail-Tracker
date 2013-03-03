@@ -1,17 +1,16 @@
 define([
-	'backbone'
-	], function(Backbone) {
+	'backbone',
+    'xml/xmlUtils'
+	], function(Backbone, XMLUtils) {
 
 	var StationStopTimes = Backbone.Model.extend({
-		initialize: function(attributes, options) {
-			this.set({
-                expectedArrival : options.expectedArrival,
-                expectedDeparture : options.expectedDeparture,
+        defaults: {
+            expectedArrival : '',
+            expectedDeparture : '',
 
-                scheduledArrival : options.scheduledArrival,
-                scheduledDeparture : options.scheduledDeparture
-            });
-		},
+            scheduledArrival : '',
+            scheduledDeparture : ''
+        },
 
 		isArrival: function() {
             return this.get('expectedDeparture') == '00:00';
@@ -20,7 +19,19 @@ define([
 		isDeparture: function() {
             return this.get('expectedArrival') == '00:00';
         }
-	});
+	}, {
+        parse: function(xmlNode) {
+            var attributes = {};
+
+            attributes.expectedArrival = XMLUtils.getNodeText(xmlNode, ['Exparrival', 'ExpectedArrival']);
+            attributes.expectedDeparture = XMLUtils.getNodeText(xmlNode, ['Expdepart', 'ExpectedDeparture']);
+
+            attributes.scheduledArrival = XMLUtils.getNodeText(xmlNode, ['Scharrival', 'ScheduledArrival']);
+            attributes.scheduledDeparture = XMLUtils.getNodeText(xmlNode, ['Schdepart', 'ScheduledDeparture']);
+
+            return attributes;
+        }
+    });
 
 	return StationStopTimes;
 });

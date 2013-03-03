@@ -10,7 +10,7 @@ describe("Train Status Model Tests", function() {
 	var TEST_LATE = "TEST_LATE";
 
 	beforeEach(function() {
-		sut = new TrainJourneyModel([], {
+		sut = new TrainJourneyModel({
 			status : TEST_STATUS,
 			lastLocation : TEST_LAST_LOCATION,
 			dueIn : TEST_DUE_IN,
@@ -32,6 +32,23 @@ describe("Train Status Model Tests", function() {
 
 	it("has an late status", function() {
 		expect(sut.get('late')).toEqual(TEST_LATE);
+	});
+
+	it("can parse an xml element and extract the train journey elements from it", function() {
+		var xml = '<TrainJourneyModel><Status>' + TEST_STATUS+ '</Status>' +
+			'<Lastlocation>' + TEST_LAST_LOCATION + '</Lastlocation>' +
+			'<Duein>' + TEST_DUE_IN + '</Duein>' +
+			'<Late>' + TEST_LATE + '</Late></TrainJourneyModel>';
+
+	    var xmlDoc = $.parseXML(xml);
+	    var $xmlDoc = $(xmlDoc);
+
+	  	var attributes = TrainJourneyModel.parse($xmlDoc.find('TrainJourneyModel')[0]);
+
+	  	expect(attributes.status).toEqual(TEST_STATUS);
+	  	expect(attributes.lastLocation).toEqual(TEST_LAST_LOCATION);
+	  	expect(attributes.dueIn).toEqual(TEST_DUE_IN);
+	  	expect(attributes.late).toEqual(TEST_LATE);
 	});
 });
 });

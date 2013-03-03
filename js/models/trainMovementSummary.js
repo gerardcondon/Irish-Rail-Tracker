@@ -4,28 +4,34 @@ define([
 	'moment'
 	], function(_, Backbone, moment) {
 
-	var calculateArrivalTime = function(options) {
-		if ((typeof options.arrival !== 'undefined') && (options.arrival !== '')){
-			return options.arrival;
+	var calculateArrivalTime = function(attributes, stopTimes) {
+		if ((typeof attributes.arrival !== 'undefined') && (attributes.arrival !== '')){
+			return attributes.arrival;
 		}
-		if ((typeof options.expectedArrival !== 'undefined') && (options.expectedArrival !== '')){
-			return options.expectedArrival;
+		if (typeof stopTimes === 'undefined') {
+			return '';
 		}
-		if ((typeof options.scheduledArrival !== 'undefined') && (options.scheduledArrival !== '')){
-			return options.scheduledArrival;
+		if ((typeof stopTimes.get('expectedArrival') !== 'undefined') && (stopTimes.get('expectedArrival') !== '')){
+			return stopTimes.get('expectedArrival');
+		}
+		if ((typeof stopTimes.get('scheduledArrival') !== 'undefined') && (stopTimes.get('scheduledArrival') !== '')){
+			return stopTimes.get('scheduledArrival');
 		}
 		return '';
 	};
 
-	var calculateDepartureTime = function(options) {
-		if ((typeof options.departure !== 'undefined') && (options.departure !== '')){
-			return options.departure;
+	var calculateDepartureTime = function(attributes, stopTimes) {
+		if ((typeof attributes.departure !== 'undefined') && (attributes.departure !== '')){
+			return attributes.departure;
 		}
-		if ((typeof options.expectedDeparture !== 'undefined') && (options.expectedDeparture !== '')){
-			return options.expectedDeparture;
+		if (typeof stopTimes === 'undefined') {
+			return '';
 		}
-		if ((typeof options.scheduledDeparture !== 'undefined') && (options.scheduledDeparture !== '')){
-			return options.scheduledDeparture;
+		if ((typeof stopTimes.get('expectedDeparture') !== 'undefined') && (stopTimes.get('expectedDeparture') !== '')){
+			return stopTimes.get('expectedDeparture');
+		}
+		if ((typeof stopTimes.get('scheduledDeparture') !== 'undefined') && (stopTimes.get('scheduledDeparture') !== '')){
+			return stopTimes.get('scheduledDeparture');
 		}
 		return '';
 	};
@@ -47,9 +53,9 @@ define([
 		},
 
 		initialize: function(attributes, options) {
-			this.set({locationName : options.locationFullName,
-				arrivalTime : calculateArrivalTime(options),
-				departureTime : calculateDepartureTime(options)
+			this.set({
+				arrivalTime : calculateArrivalTime(attributes, options.stopTimes),
+				departureTime : calculateDepartureTime(attributes, options.stopTimes)
 			});
 			this.setCurrentStatus();
 		},
@@ -66,6 +72,16 @@ define([
 				departureTimeMoment = moveToCurrentDay(departureTimeMoment, now);
 				this.set({hasDeparted : departureTimeMoment.isBefore(now)});
 			}
+		}
+	}, {
+		parse: function(xmlNode) {
+			var attributes = {};
+
+			attributes.arrival = $(xmlNode).find('Arrival').text();
+			attributes.departure = $(xmlNode).find('Departure').text();
+			attributes.locationFullName = $(xmlNode).find('LocationFullName').text();
+            
+			return attributes;
 		}
 	});
 

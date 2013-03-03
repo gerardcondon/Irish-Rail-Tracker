@@ -3,7 +3,6 @@
 ## JavaScript
 * Refactor Controllers to extract common behaviour
 * Investigate parse function to make DRY
-* Move parse functions down to the model
  
 * Add proper about page
 
@@ -11,7 +10,6 @@
 * Add labels to markers for station names
 * Add pop up on markers
 
-* Refactor models to extract common base class
 * Fix newline in train message
 
 * Train Summary Implement test & Fix the case when the departure is on the following day
@@ -35,7 +33,6 @@
 * Make Sidebar pretty
 
 ## JASMINE
-* Complete Model Tests
 * Add Collection Tests
 * Add View Tests
 * Invs stubbing out google maps

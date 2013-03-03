@@ -15,6 +15,15 @@ define([
         initialize: function(attributes, options) {
             this.constructor.__super__.initialize.apply(this, arguments);
         }
+    }, {
+        parse: function(xmlNode) {
+            var attributes = Locatable.parse(xmlNode, 'Train');
+            attributes.status = $(xmlNode).find('TrainStatus').text();
+            attributes.date = $(xmlNode).find('TrainDate').text();
+            attributes.message = $(xmlNode).find('PublicMessage').text();
+            attributes.direction = $(xmlNode).find('Direction').text();
+            return attributes;
+        }
     });
 
     // TODO Move to a common location

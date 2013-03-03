@@ -51,5 +51,28 @@ describe("Train Model Tests", function() {
 	it("has a direction", function() {
 		expect(sut.get("direction")).toEqual(TEST_DIRECTION);
 	});
+
+	it("can parse an xml element and extract the train elements from it", function() {
+		var xml = '<TrainModel><TrainStatus>' + TEST_STATUS + '</TrainStatus>' +
+			'<TrainDate>' + TEST_DATE + '</TrainDate>' +
+			'<TrainLatitude>' + TEST_LATITUDE + '</TrainLatitude>' +
+			'<TrainLongitude>' + TEST_LONGITUDE + '</TrainLongitude>' +
+			'<TrainCode>' + TEST_CODE + '</TrainCode>' +
+			'<PublicMessage>' + TEST_MESSAGE + '</PublicMessage>' +
+			'<Direction>' + TEST_DIRECTION + '</Direction></TrainModel>';
+
+	    var xmlDoc = $.parseXML(xml);
+	    var $xmlDoc = $(xmlDoc);
+
+	  	var attributes = TrainModel.parse($xmlDoc.find('TrainModel')[0]);
+
+	  	expect(attributes.code).toEqual(TEST_CODE);
+	  	expect(attributes.latitude).toEqual(TEST_LATITUDE);
+	  	expect(attributes.longitude).toEqual(TEST_LONGITUDE);
+	  	expect(attributes.status).toEqual(TEST_STATUS);
+	  	expect(attributes.message).toEqual(TEST_MESSAGE);
+	  	expect(attributes.direction).toEqual(TEST_DIRECTION);
+	  	expect(attributes.date).toEqual(TEST_DATE);
+	});
 });
 });
