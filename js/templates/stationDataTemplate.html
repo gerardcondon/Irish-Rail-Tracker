@@ -1,0 +1,7 @@
+<div class="stationDataView">
+    <label><strong>Due in </strong> <%- dueIn %> minutes <strong>at</strong> <%- expectedArrival %></label>
+    <label><strong>From</strong> <%- origin %> <strong>to</strong> <%- destination %></label>
+    <% if ( late > 0 ) { %> <label><strong>Status:</strong> <%- late %> minutes late</label> <% } %>
+    <% if ( status != 'No Information' ) { %> <label><%- status %> <%- lastLocation %></label> <% } %>
+    <label><strong>Train Type:</strong> <%- trainType %></label>
+</div>

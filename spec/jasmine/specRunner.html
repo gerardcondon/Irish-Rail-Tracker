@@ -7,6 +7,7 @@
   <script type="text/javascript" src="lib/jasmine.js"></script>
   <script type="text/javascript" src="lib/jasmine-html.js"></script>
   <script type="text/javascript" src="lib/jasmine-console-runner.js"></script>
+  <script type="text/javascript" src="lib/jasmine-jquery/jasmine-jquery.js"></script>
   <!-- ... -->
 
   <!-- global lib includes -->
@@ -25,6 +26,7 @@ require.config({
     backbone: 'lib/backbone/backbone',
     //alias to plugins
     async : 'lib/require/async',
+    text : 'lib/require/text',
     propertyParser : 'lib/require/propertyParser'
   },
   shim: {
@@ -50,7 +52,9 @@ require.config({
       '../spec/jasmine/models/trainStatus.spec',
       '../spec/jasmine/models/stationStopTimes.spec',
       '../spec/jasmine/models/trainMovement.spec',
-      '../spec/jasmine/models/trainMovementSummary.spec'
+      '../spec/jasmine/models/trainMovementSummary.spec',
+      '../spec/jasmine/views/stationListView.spec'
+
     ],
       function($) {
         $(function() {

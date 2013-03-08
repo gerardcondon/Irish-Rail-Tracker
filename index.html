@@ -14,41 +14,16 @@
 	<link rel="stylesheet" href="css/styles.css">
 
   <!-- Templates -->
+  <script type="text/template" id="station-list-view-template">
+  <div id="station-list-accordion" class="accordion-group">
+  </div>
+  </script>
+
   <script type="text/template" id="train-movement-template">
   <div class="trainMovementView">
   <label><strong>Station:</strong> <%- locationFullName %></label>
   <label><strong><%  print(hasArrived ?  'Arrived:' : 'Expected Arrival') %></strong> <%- arrivalTime %></label>
   <label><strong><% print(hasDeparted ?  'Departed:' : 'Expected Departure') %></strong> <%- departureTime %></label>
-  </div>
-  </script>
-
-  <script type="text/template" id="station-data-departing-template">
-  <div class="stationDataView">
-  <label><strong>Departing in </strong> <%- dueIn %> minutes <strong>at</strong> <%- expectedDeparture %></label>
-  <label><%- origin %> to <%- destination %></label>
-  <% if ( late > 0 ) { %> <label><strong>Status:</strong> <%- late %> minutes late</label> <% } %>
-  <% if ( status != 'No Information' ) { %> <label><%- status %> <%- lastLocation %></label> <% } %>
-  <label><strong>Train Type:</strong> <%- trainType %></label>
-  </div>
-  </script>
-
-  <script type="text/template" id="station-data-arriving-template">
-  <div class="stationDataView">
-  <label><strong>Arriving in </strong> <%- dueIn %> minutes <strong>at</strong> <%- expectedArrival %></label>
-  <label><%- origin %> to <%- destination %></label>
-  <% if ( late > 0 ) { %> <label><strong>Status:</strong> <%- late %> minutes late</label> <% } %>
-  <% if ( status != 'No Information' ) { %> <label><%- status %> <%- lastLocation %></label> <% } %>
-  <label><strong>Train Type:</strong> <%- trainType %></label>
-  </div>
-  </script>
-
-  <script type="text/template" id="station-data-template">
-  <div class="stationDataView">
-  <label><strong>Due in </strong> <%- dueIn %> minutes <strong>at</strong> <%- expectedArrival %></label>
-  <label><strong>From</strong> <%- origin %> <strong>to</strong> <%- destination %></label>
-  <% if ( late > 0 ) { %> <label><strong>Status:</strong> <%- late %> minutes late</label> <% } %>
-  <% if ( status != 'No Information' ) { %> <label><%- status %> <%- lastLocation %></label> <% } %>
-  <label><strong>Train Type:</strong> <%- trainType %></label>
   </div>
   </script>
 
@@ -59,12 +34,12 @@
 
     <div class="masthead">
       <h3 class="muted">Irish Rail Tracker</h3>
-      <div class="navbar nav-tabs">
+      <div id="main-nav-bar" class="navbar nav-tabs">
         <div class="navbar-inner">
           <div class="container">
             <ul class="nav">
               <li class="active"><a href="#station-map-page" data-toggle="tab">Station Map</a></li>
-              <li><a href="#station-list-page" data-toggle="tab">Station List</a></li>
+              <li id="nav-bar-station-list-button"><a href="#station-list-page" data-toggle="tab">Station List</a></li>
               <li><a href="#trains-page" data-toggle="tab">Train Map</a></li>
               <li><a href="#train-list-page" data-toggle="tab">Train List</a></li>
               <li><a href="http://www.gerardcondon.com/about">About</a></li>
@@ -100,54 +75,7 @@
 
         <div class="main-panel">
           <div class="accordion span8" id="station-list-accordion">
-            <div class="accordion-group">
-              <div class="accordion-heading">
-                <a class="accordion-toggle" data-toggle="collapse" data-parent="#station-list-accordion" href="#station-list-collapse-dart">
-                  DART
-                </a>
-              </div>
-              <div id="station-list-collapse-dart" class="accordion-body collapse in">
-                <div class="accordion-inner">
-                  Anim pariatur cliche...
-                </div>
-              </div>
-            </div>
-            <div class="accordion-group">
-              <div class="accordion-heading">
-                <a class="accordion-toggle" data-toggle="collapse" data-parent="#station-list-accordion" href="#station-list-collapse-suburban">
-                  Suburban
-                </a>
-              </div>
-              <div id="station-list-collapse-suburban" class="accordion-body collapse">
-                <div class="accordion-inner">
-                  Anim pariatur cliche...
-                </div>
-              </div>
-            </div>
-            <div class="accordion-group">
-              <div class="accordion-heading">
-                <a class="accordion-toggle" data-toggle="collapse" data-parent="#station-list-accordion" href="#station-list-collapse-mainline">
-                  Mainline
-                </a>
-              </div>
-              <div id="station-list-collapse-mainline" class="accordion-body collapse">
-                <div class="accordion-inner">
-                  Anim pariatur cliche...
-                </div>
-              </div>
-            </div>
-            <div class="accordion-group">
-              <div class="accordion-heading">
-                <a class="accordion-toggle" data-toggle="collapse" data-parent="#station-list-accordion" href="#station-list-collapse-others">
-                  Others
-                </a>
-              </div>
-              <div id="station-list-collapse-others" class="accordion-body collapse">
-                <div class="accordion-inner">
-                  Anim pariatur cliche...
-                </div>
-              </div>
-            </div>
+            
           </div>
 
           <div id="station-list-main-panel-sidebar" class="sidebar span3"></div>

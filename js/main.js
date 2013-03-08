@@ -7,10 +7,10 @@ require.config({
     underscore: 'lib/underscore/underscore-min',
     backbone: 'lib/backbone/backbone',
     moment: "lib/moment/moment",
-    templates: '../templates',
     //alias to plugins
     async : 'lib/require/async',
     goog : 'lib/require/goog',
+    text : 'lib/require/text',
     propertyParser : 'lib/require/propertyParser'
   },
   shim: {

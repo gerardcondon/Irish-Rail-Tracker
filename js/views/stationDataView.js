@@ -4,15 +4,19 @@ define([
     'backbone',
     'bootstrap',
     'models/stationData',
-    'collections/stationDatas'
-    ], function($, _, Backbone, BootStrap, StationDataModel, StationDatasCollection){
+    'collections/stationDatas',
+    'text!/js/templates/stationDataTemplate.html',
+    'text!/js/templates/stationDataArrivingTemplate.html',
+    'text!/js/templates/stationDataDepartingTemplate.html'
+    ], function($, _, Backbone, BootStrap, StationDataModel, StationDatasCollection,
+        stationDataTemplate, stationDataArrivingTemplate, stationDataDepartingTemplate){
 
     var StationDataView = Backbone.View.extend({
 
         tagName:'li',
-        template:  _.template($('#station-data-template').html()),
-        arrivingTemplate: _.template($('#station-data-arriving-template').html()),
-        departingTemplate: _.template($('#station-data-departing-template').html()),
+        template:  _.template(stationDataTemplate),
+        arrivingTemplate: _.template(stationDataArrivingTemplate),
+        departingTemplate: _.template(stationDataDepartingTemplate),
 
         initialize:function(options) {
             this.model = options.stationData;

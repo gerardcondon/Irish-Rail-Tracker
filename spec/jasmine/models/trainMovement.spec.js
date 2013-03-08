@@ -2,7 +2,7 @@ define([
   'models/trainMovement'
 ], function(TrainMovementModel) {
 
-describe("Train Journey Model Tests", function() {
+describe("Train Movement Model Tests", function() {
     var sut = {};
     var TEST_CODE = "TEST_CODE";
     var TEST_DATE = "TEST_DATE";
@@ -26,15 +26,15 @@ describe("Train Journey Model Tests", function() {
     });
 
     it("has a train journey element", function() {
-        expect(true).toBeFalsy();
+        expect(sut.journey).not.toBeNull();
     });
 
     it("has a station stop times element", function() {
-        expect(true).toBeFalsy();
+        expect(sut.stopTimes).not.toBeNull();
     });
 
     it("has a train movement summary element", function() {
-        expect(true).toBeFalsy();
+        expect(sut.summary).not.toBeNull();
     });
 
     it("can parse train movement data from an xml element", function() {

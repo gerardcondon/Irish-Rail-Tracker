@@ -4,4 +4,9 @@ describe "Basic Webpage Layout", js: true, type: :feature do
     visit "/"
     page.should have_content("Irish Rail Tracker")
   end
+
+  it "should have a nav bar" do
+    visit "/"
+    page.should have_selector("#main-nav-bar")
+  end
 end
