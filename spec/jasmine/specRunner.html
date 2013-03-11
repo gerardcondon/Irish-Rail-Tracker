@@ -27,7 +27,8 @@ require.config({
     //alias to plugins
     async : 'lib/require/async',
     text : 'lib/require/text',
-    propertyParser : 'lib/require/propertyParser'
+    propertyParser : 'lib/require/propertyParser',
+    jasmine : '../spec/jasmine'
   },
   shim: {
       underscore: {
@@ -53,7 +54,9 @@ require.config({
       '../spec/jasmine/models/stationStopTimes.spec',
       '../spec/jasmine/models/trainMovement.spec',
       '../spec/jasmine/models/trainMovementSummary.spec',
-      '../spec/jasmine/views/stationListView.spec'
+      '../spec/jasmine/views/stationListView.spec',
+      '../spec/jasmine/views/stationAccordionView.spec',
+      '../spec/jasmine/views/stationAccordionGroupView.spec'
 
     ],
       function($) {

@@ -13,6 +13,10 @@ define([
             this.type = options.type;
             this.xmlNodeKey = 'objStation';
             this.url = 'http://api.irishrail.ie/realtime/realtime.asmx/getAllStationsXML_WithStationType?StationType=' + this.type;
+        },
+
+        comparator: function(model) {
+            return model.get('description');
         }
     });
 

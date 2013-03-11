@@ -1,25 +1,25 @@
 define([
     'jquery',
-    'views/stationListView'
-], function($, StationListView) {
+    'views/stationListView',
+    'jasmine/views/viewSpecHelper'
+], function($, StationListView, helper) {
 
     describe("Station List View", function() {
         describe("render", function() {
             var el;
             var sut;
             var stationSideBarStub;
+            var stationAccordionViewStub;
             var mainDiv;
 
             beforeEach(function() {
-                stationSideBarStub = {
-                    render : jasmine.createSpy().andReturn({el : {}})
-                };
+                stationSideBarStub = helper.createViewStub();
+                stationAccordionViewStub = helper.createViewStub();
 
-                stationAccordionView = {
-                    render : jasmine.createSpy().andReturn({el : {}})
-                };
-
-                sut = new StationListView({sideBarConstructor : function(){return stationSideBarStub}});
+                sut = new StationListView({
+                    sideBarConstructor : function(){return stationSideBarStub},
+                    stationAccordionConstructor : function(){return stationAccordionViewStub}
+                });
                 el = sut.render().el;
                 mainDiv = $('<span></span>');
                 mainDiv.append(el);
@@ -30,7 +30,7 @@ define([
             });
 
             it("should render a Station List Accordion View", function() {
-                expect(stationAccordionView.render).toHaveBeenCalled();
+                expect(stationAccordionViewStub.render).toHaveBeenCalled();
                 //expect($(el)).toContain("#station-list-accordion");
             });
           

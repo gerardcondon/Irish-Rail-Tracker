@@ -25,7 +25,7 @@ define([
                 that.filterIDs = _.union(that.filterIDs, args);
                 if (options.type == StationModel.constants.MAINLINE) {
                     that.addStationCollection({
-                        stationType: StationModel.constants.ALL,
+                        type: StationModel.constants.ALL,
                         zIndex: 0,
                         colour: 'purple',
                         buttonID: '#other-button'

@@ -25,7 +25,7 @@ define([
                 that.filterIDs = _.union(that.filterIDs, args);
                 if (options.type == TrainModel.constants.MAINLINE) {
                     that.addTrainCollection({
-                        stationType: TrainModel.constants.ALL,
+                        type: TrainModel.constants.ALL,
                         zIndex: 0,
                         colour: 'purple',
                         buttonID: '#train-other-button'

@@ -23,6 +23,10 @@
   margin: 0;
 }
 
+.station-list-accordion-list-div {
+  overflow : auto;
+}
+
 .trainMovementView {
   border: 1px solid #e3e3e3;
   background-color: #ffffff;
@@ -44,6 +48,41 @@
 .accordion-heading {
   background-color: #fbfbfb;
 
+}
+
+.accordion-inner {
+  height : 400px;
+}
+
+.no-space {
+    margin-left:0;
+}
+
+@media (max-width: 979px) and (min-width: 768px) {
+.station-list-accordion-list-span {
+  width: 50%;
+  margin-left: 0px;
+}
+}
+
+.station-list-accordion-list-span {
+  width: 50%;
+  margin-left: 0px;
+}
+
+.accordion-list-item {
+  border: 1px solid #e3e3e3;
+  background-color: #fefefe;
+  padding: 10px;
+}
+
+.station-list-accordion-list {
+  list-style-type: none;
+  margin: 0;
+}
+
+.station-list-accordion-list-div {
+  padding: 0px;
 }
 
 .map_container img { max-width:none; }

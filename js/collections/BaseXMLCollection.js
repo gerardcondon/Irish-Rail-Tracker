@@ -5,6 +5,10 @@ define([
     'network/crossDomainRequest'
     ], function($, _, Backbone, CrossDomainRequest){
 
+function endsWith(str, suffix) {
+    return str.indexOf(suffix, str.length - suffix.length) !== -1;
+}
+
     var BaseXMLCollection = Backbone.Collection.extend({
         defaults: {
             xmlNodeKey : ''
@@ -13,6 +17,10 @@ define([
         sync : function(method, model, options) {
             console.log('BaseXMLCollection sync');
             var that = this;
+            console.log('syncing with '  +this.url);
+            if (endsWith(this.url, 'undefined')) {
+                console.log('break here');
+            }
             CrossDomainRequest.exec(this.url, function(data) {
                 data.type = that.type;
                 options.success && options.success(that, data, options);
@@ -31,9 +39,9 @@ define([
                 var params = that.model.parse(this);
                 parsed.push(params);
             });
-          
+
             return parsed;
-        }     
+        }
     });
 
     return BaseXMLCollection;
