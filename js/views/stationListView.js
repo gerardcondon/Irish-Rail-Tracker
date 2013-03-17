@@ -18,7 +18,7 @@ define([
             this.sideBarConstructor = options.sideBarConstructor || StationSideBarView;
             this.stationAccordionConstructor = options.stationAccordionConstructor || StationAccordionView;
 
-            this.sideBarView = new this.sideBarConstructor({ id : "station-list-sidebar"});
+            this.sideBarView = new this.sideBarConstructor({ id : "station-list-sidebar", dispatcher : dispatcher});
             this.stationAccordionView = new this.stationAccordionConstructor({model : this.stationNetwork, dispatcher : dispatcher});
         },
 

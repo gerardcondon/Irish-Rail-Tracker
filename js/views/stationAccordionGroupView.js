@@ -22,8 +22,12 @@ define([
             this.collection.each(function(station, index) {
                 var $item = $(this.itemTemplate({title : station.get('description')}));
                 var list = '.station-list-accordion-list.' + (index%2===0 ? 'left' : 'right');
+                var dispatcher = this.dispatcher;
+
                 this.$(list).append($item);
-                $item.click(this.dispatcher.trigger("station-selected"), station);
+                $item.bind('click', function() {
+                    dispatcher.trigger("station-selected", station);
+                });
             }, this);
 
             return this;

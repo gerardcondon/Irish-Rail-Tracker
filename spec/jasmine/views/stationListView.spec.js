@@ -31,12 +31,10 @@ define([
 
             it("should render a Station List Accordion View", function() {
                 expect(stationAccordionViewStub.render).toHaveBeenCalled();
-                //expect($(el)).toContain("#station-list-accordion");
             });
           
             it("should render a Station List SideBar View", function() {
                 expect(stationSideBarStub.render).toHaveBeenCalled();
-                //expect($(el)).toContain("#station-list-sidebar");
             });
         });
     });

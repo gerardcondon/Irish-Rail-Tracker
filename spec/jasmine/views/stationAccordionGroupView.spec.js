@@ -11,7 +11,7 @@ define([
         beforeEach(function() {
             sut = new StationAccordionGroupView({collection : 
                 new Backbone.Collection([{description : "1"}, {description : "2"}]),
-                listener : jasmine.createSpyObj('listener', ['trigger'])
+                dispatcher : jasmine.createSpyObj('dispatcher', ['trigger'])
             });
         });
 
