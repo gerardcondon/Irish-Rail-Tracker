@@ -33,16 +33,15 @@ define([
             this.numCollectionsCompleted = this.numCollectionsCompleted + 1;
             if (this.numCollectionsCompleted == 4) {
                 var takenIds = [];
-                takenIds.concat(this.dartCollection.pluck('id'));
-                takenIds.concat(this.suburbanCollection.pluck('id'));
-                takenIds.concat(this.mainlineCollection.pluck('id'));
+                takenIds = takenIds.concat(this.dartCollection.pluck('id'));
+                takenIds = takenIds.concat(this.suburbanCollection.pluck('id'));
+                takenIds = takenIds.concat(this.mainlineCollection.pluck('id'));
 
                 var otherStations = this.allCollection.reject(function(station) {
                     var id = station.get('id');
                     return _.contains(takenIds, id);
 
                 }, this);
-
                 this.otherCollection = new StationsCollection(otherStations, {type : "O"});
                 this.trigger("add", this.otherCollection);
             }

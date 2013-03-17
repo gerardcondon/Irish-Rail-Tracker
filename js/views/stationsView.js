@@ -28,6 +28,7 @@ define([
                         type: StationModel.constants.ALL,
                         zIndex: 0,
                         colour: 'purple',
+                        filterIDs : that.filterIDs,
                         buttonID: '#other-button'
                     });
                 }
