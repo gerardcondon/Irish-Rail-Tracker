@@ -24,7 +24,9 @@ define([
         var stationNetwork = new StationNetwork();
         //var stationNetwork = new Backbone.Model();
 
-        var stationsView = new StationsView();
+        var stationsView = new StationsView({
+            el : '#station-map-container',
+            stationNetwork : stationNetwork});
         var stationsListView = new StationListView({
             el : '#station-list-container',
             stationNetwork : stationNetwork});

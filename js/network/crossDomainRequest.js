@@ -32,7 +32,6 @@ define([
             }
             // Else, Maybe we requested a site that doesn't exist, and nothing returned.
             else {
-                console.log("Retrying YQL Query");
                 executeQuery(yql, site, callback);
             }
         }
