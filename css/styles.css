@@ -13,6 +13,17 @@
   background-color: #fdfdfd;
 }
 
+.sidebar-heading {
+  border: 1px solid #e3e3e3;
+  background-color: #fdfdfd;
+  padding: 5px;
+}
+
+.sidebar-heading h3 {
+  color: #666666;
+  text-align: center;
+}
+
 .stationDataView {
  	border: 1px solid #e3e3e3;
   background-color: #fefefe;
@@ -30,7 +41,8 @@
 
 .trainMovementView {
   border: 1px solid #e3e3e3;
-  background-color: #ffffff;
+  background-color: #fefefe;
+  padding: 5px;
 }
 
 .trainMovementList {
