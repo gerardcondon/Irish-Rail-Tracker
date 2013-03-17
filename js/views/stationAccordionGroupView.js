@@ -16,6 +16,8 @@ define([
 
         render: function() {
             this.setElement(this.template({id : "station-accordion-group-" + this.collection.type, heading : this.collection.type}));
+            this.setElement(this.template({id : "station-accordion-group-" + this.collection.type,
+                heading : StationType.getDescriptionForCode(this.collection.type)}));
 
             this.collection.each(function(station, index) {
                 var $item = $(this.itemTemplate({title : station.get('description')}));
