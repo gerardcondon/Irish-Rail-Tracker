@@ -15,12 +15,7 @@ function endsWith(str, suffix) {
         },
 
         sync : function(method, model, options) {
-            console.log('BaseXMLCollection sync');
             var that = this;
-            console.log('syncing with '  +this.url);
-            if (endsWith(this.url, 'undefined')) {
-                console.log('break here');
-            }
             CrossDomainRequest.exec(this.url, function(data) {
                 data.type = that.type;
                 options.success && options.success(that, data, options);

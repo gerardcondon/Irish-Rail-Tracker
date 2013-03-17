@@ -24,7 +24,6 @@ define([
                 el = sut.render().el;
                 mainDiv = $('<span></span>');
                 mainDiv.append(sut.el);
-                console.log(mainDiv);
                 expect(mainDiv.find(".accordion-group")[0]).toBeTruthy();
             });
 

@@ -15,7 +15,6 @@ define([
             this.date = options.date.split(' ').join('_');
             this.xmlNodeKey = 'objTrainMovements';
             this.url = 'http://api.irishrail.ie/realtime/realtime.asmx/getTrainMovementsXML?TrainId=' + this.code + '&TrainDate=' + this.date;
-            console.log(this.url);
         },
 
         comparator: function(model) {

@@ -26,7 +26,6 @@ define([
                     $(that.el).append("<hr>No trains stopping in the next 90 mins");
                 } else {
                     collection.each(function(stationData){
-                        //console.log("Processing " + JSON.stringify(stationData));
                         var stationDataView = new StationDataView({stationData: stationData});
                         $ul.append(stationDataView.render().el);
                         $(that.el).append($ul);

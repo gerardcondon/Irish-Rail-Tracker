@@ -20,7 +20,6 @@ define([
 
             var that = this;
             var onDataHandler = function(collection) {
-                console.log('collection length = ' + collection.length);
                 var validIDs = collection.pluck("code");
 
                 if (that.filterIDs) {

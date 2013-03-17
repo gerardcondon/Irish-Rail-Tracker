@@ -20,7 +20,6 @@ define([
 
             var that = this;
             var onDataHandler = function(collection) {
-                console.log('collection length = ' + collection.length);
                 var validIDs = collection.pluck("id");
 
                 if (that.filterIDs) {
@@ -29,7 +28,6 @@ define([
 
                 collection.each(function( station ){
                     if (_.contains(validIDs, station.get('id'))) {
-                        //console.log('Processing station ' + JSON.stringify(station.toJSON()));
                         var stationLatlng = new google.maps.LatLng(station.get('latitude'), station.get('longitude'));
                         var marker = new google.maps.Marker({
                             position: stationLatlng,

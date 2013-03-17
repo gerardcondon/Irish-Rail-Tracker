@@ -31,7 +31,6 @@ define([
 
         processOtherStationsCollection: function() {
             this.numCollectionsCompleted = this.numCollectionsCompleted + 1;
-            console.log("numCollectionsCompleted = " + this.numCollectionsCompleted);
             if (this.numCollectionsCompleted == 4) {
                 var takenIds = [];
                 takenIds.concat(this.dartCollection.pluck('id'));

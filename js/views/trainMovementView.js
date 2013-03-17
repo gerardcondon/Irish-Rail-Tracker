@@ -19,7 +19,6 @@ define([
         render:function() {
             var template = this.template;
             var summaryJSON = this.model.summary.toJSON();
-            console.log("Rendering movement with data: " + JSON.stringify(summaryJSON));
             this.$el.html(template(summaryJSON));
             return this;
         }

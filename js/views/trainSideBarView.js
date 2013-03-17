@@ -26,7 +26,6 @@ define([
                     $(that.el).append("<hr>No stop information for selected train.");
                 } else {
                     collection.each(function(trainMovement){
-                        //console.log("Processing " + JSON.stringify(trainMovement));
                         var trainMovementView = new TrainMovementView({trainMovement: trainMovement});
                         $ul.append(trainMovementView.render().el);
                         $(that.el).append($ul);
