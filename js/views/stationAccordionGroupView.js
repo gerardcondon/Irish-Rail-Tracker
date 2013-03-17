@@ -3,9 +3,10 @@ define([
     'underscore',
     'backbone',
     'bootstrap',
+    'entities/stationType',
     'text!/js/templates/stationAccordionGroupTemplate.html',
     'text!/js/templates/stationAccordionGroupItemTemplate.html'
-    ], function($, _, Backbone, BootStrap, accordionGroupTemplate, itemTemplate){
+    ], function($, _, Backbone, BootStrap, StationType, accordionGroupTemplate, itemTemplate){
 
     var StationAccordionGroupView = Backbone.View.extend({
         template: _.template(accordionGroupTemplate),
@@ -15,7 +16,6 @@ define([
         },
 
         render: function() {
-            this.setElement(this.template({id : "station-accordion-group-" + this.collection.type, heading : this.collection.type}));
             this.setElement(this.template({id : "station-accordion-group-" + this.collection.type,
                 heading : StationType.getDescriptionForCode(this.collection.type)}));
 
