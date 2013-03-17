@@ -20,7 +20,7 @@ define([
             var attributes = Locatable.parse(xmlNode, 'Train');
             attributes.status = $(xmlNode).find('TrainStatus').text();
             attributes.date = $(xmlNode).find('TrainDate').text();
-            attributes.message = $(xmlNode).find('PublicMessage').text();
+            attributes.message = $(xmlNode).find('PublicMessage').text().replace(/\\n/g, '\n');
             attributes.direction = $(xmlNode).find('Direction').text();
             return attributes;
         }
