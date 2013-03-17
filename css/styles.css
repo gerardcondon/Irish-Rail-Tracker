@@ -10,12 +10,13 @@
 	height:550px;
  	border: 1px solid #e3e3e3;
  	overflow: auto;
-  background-color: #ffffff;
+  background-color: #fdfdfd;
 }
 
 .stationDataView {
  	border: 1px solid #e3e3e3;
-  background-color: #ffffff;
+  background-color: #fefefe;
+  padding: 5px;
 }
 
 .stationDataList {
